@@ -1,4 +1,4 @@
-Scattering Cross Sections for Gold Nanoparticle — COMSOL Multiphysics Model
+## Scattering Cross Sections for Gold Nanoparticle — COMSOL Multiphysics Model
 
 
 ## Overview
