@@ -1,17 +1,11 @@
-# Mie Scattering of a 100 nm Gold Nanoparticle — COMSOL Multiphysics Model
+Scattering Cross Sections for Gold Nanoparticle — COMSOL Multiphysics Model
 
-![Plasmonic resonance field distribution](results/plasmonic_resonance_Ez.png)
-![Total cross sections vs wavelength](results/total_cross_sections.png)
 
 ## Overview
 
-This repository contains a COMSOL Multiphysics finite element model of electromagnetic
-plane-wave scattering off a spherical **gold nanoparticle (100 nm diameter)**, computed
-across the near-UV, visible, and near-infrared spectrum (~188–1940 nm). The model
-solves the full-wave Maxwell equations around a single nanosphere and extracts the
-**scattering, absorption, extinction, radar, and differential scattering cross-sections**
-(SCS, ACS, ECS, RCS, dSCS) as a function of incident wavelength, allowing identification
-of the particle's **localized surface plasmon resonance (LSPR)**.
+This repository contains a COMSOL FEM model of electromagnetic plane-wave scattering off a spherical **gold nanoparticle (100 nm diameter)**, computed
+across the near-UV, visible, and near-infrared spectrum (~188–1940 nm). The model solves the full-wave Maxwell equations around a nanosphere and extracts the
+**scattering, absorption, extinction, radar, and differential scattering cross-sections** (SCS, ACS, ECS, RCS, dSCS) as a function of incident wavelength, allowing identification of the particle's **localized surface plasmon resonance (LSPR)**.
 
 This simulation was developed as part of my MSc research on carbon nanotube-based field
 emission devices functionalized with gold nanoparticles, where understanding the optical
@@ -55,7 +49,7 @@ For this version, the following parameters were modified:
 | Particle material | Gold (Au) |
 | Refractive index (n, k) | Tabulated, wavelength-dependent (Johnson & Christy data, loaded as interpolation functions) |
 | Wavelength sweep range | ≈ 188 nm – 1940 nm |
-| Surrounding medium | Air / vacuum (n = 1) |
+| Surrounding medium | Ethylene glycol (n = 1.413) |
 
 The real (n) and imaginary (k) parts of the gold refractive index were each imported into
 COMSOL as a 1D **interpolation function** of wavelength, built from tabulated data
@@ -98,8 +92,7 @@ specific contribution of the base model relative to the simpler COMSOL tutorial
 
 ## Model details
 
-- **Software**: COMSOL Multiphysics (compatible with the original 4.3/4.3a base files;
-  re-run and verified in [your COMSOL version — fill in])
+- **Software**: COMSOL Multiphysics (version 6.2)
 - **Physics interface**: Electromagnetic Waves, Frequency Domain (`emw`)
 - **Geometry**: 3D, single sphere (100 nm diameter) centered in a spherical air domain,
   enclosed by a Perfectly Matched Layer (PML) to absorb outgoing scattered radiation
@@ -109,15 +102,6 @@ specific contribution of the base model relative to the simpler COMSOL tutorial
 - **Study**: Frequency/wavelength sweep across the range listed above
 - **Validation**: Results benchmarked against analytical Mie theory predictions (as
   established in the original base model)
-
-## How to open and run the model
-
-1. Download the `.mph` model file from [`model/`](model/)
-2. Open COMSOL Multiphysics
-3. File → Open → select the downloaded `.mph` file
-4. Under **Study**, run the wavelength sweep (Compute / F5)
-5. Cross-section results can be inspected under **Results → Derived Values** and the
-   field plots under **Results → 3D Plot Group**
 
 ## File structure
 
